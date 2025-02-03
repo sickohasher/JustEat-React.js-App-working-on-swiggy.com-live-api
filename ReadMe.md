@@ -39,7 +39,7 @@ We show the latest restaurants available in your city, with all the details. Pic
 
 6) Place Order.
 
-7) Higher order components
+7) Higher order componentss
 
 
 <h1>Work in progress</h1>
