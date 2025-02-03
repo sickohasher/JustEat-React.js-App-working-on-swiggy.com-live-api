@@ -7,6 +7,7 @@ let MenuDis = ({item , item2 , dummy})=>{
     
 
     // console.log(item , item2 , dummy);  {/* taking dummy as a props /prop drilling */}
+     // console.log(item , item2 , dummy);  {/* taking dummy as a props /prop drilling */}
 
     const dispatch = useDispatch();    // dispatch hook 
 
