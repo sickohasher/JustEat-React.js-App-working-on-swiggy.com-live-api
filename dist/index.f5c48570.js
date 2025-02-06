@@ -36036,33 +36036,42 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$9ffe.prelude(module);
 
 try {
-// import Reslist from '../Api/api.jsx';       // importing api datas    // this import is use when default expoert is done
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _resturantcard = require("./Resturantcard"); // importing resturant card component
-var _resturantcardDefault = parcelHelpers.interopDefault(_resturantcard);
-var _react = require("react"); // importing hook (usestate, useeffect) from react
-var _shimmer = require("./Shimmer"); // importing shimmer ui from shimerui component 
-var _shimmerDefault = parcelHelpers.interopDefault(_shimmer);
-var _reactRouterDom = require("react-router-dom");
-var _url = require("../constants/url");
-var _useNetStatus = require("./utils/useNetStatus");
-var _useNetStatusDefault = parcelHelpers.interopDefault(_useNetStatus);
-var _s = $RefreshSig$();
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = void 0;
+var _Resturantcard = _interopRequireDefault(require("cdeac73b2d5325eb"));
+var _react = require("943de6e8f8e83e49");
+var _Shimmer = _interopRequireDefault(require("6f8964d38dd56970"));
+var _reactRouterDom = require("8f9491282c9dbd6f");
+var _url = require("9d81d0f10680398f");
+var _useNetStatus = _interopRequireDefault(require("754a53d6a1594a60"));
+function _interopRequireDefault(e) {
+    return e && e.__esModule ? e : {
+        default: e
+    };
+}
+// import Reslist from '../Api/api.jsx';       // importing api datas    // this import is use when default expoert is done
+// importing resturant card component
+// importing hook (usestate, useeffect) from react
+// importing shimmer ui from shimerui component 
 // import statusImg from "../../accests/07_offline_page.png"; 
 let Body = ()=>{
-    _s();
+    // body component
     let [List, setList] = (0, _react.useState)([]); // created a state variable using hook - intiasally value of usestate is given to List(state variable) and to update/modify state variable values we use setList(function)  
     let [filterList, setFilterList] = (0, _react.useState)([]); // copy of list (contain same data)
     let [search, setSearch] = (0, _react.useState)("");
     // console.log(List[0].info.avgRating)     // data of reslist is in list  
     console.log("Bodyrending", filterList);
     (0, _react.useEffect)(()=>{
+        // it is executed after component get render so used to render data which is used to be call after initail render of component - ex api calls etc
         fetchApiData(); // function executed
     }, []);
     let fetchApiData = async ()=>{
-        let fetchApi = await fetch((0, _url.Res_list)); // fetching api live 
+        // func that fetches api data
+        let fetchApi = await fetch(_url.Res_list); // fetching api live 
         let apiData = await fetchApi.json();
         // console.log(apiData);       // consoling data recived from fectced api  
         // setList(apiData.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)   // due to this again component re-render when useeffect is executed and value of local state variable again changes/modified
@@ -36072,35 +36081,36 @@ let Body = ()=>{
     // if(List.length === 0){            // Shows Shimmer Ui Component on initial render when data is not fetched (ie when data is not present)
     //       return <ShimmerUi/>         // rendring on basis of condition - known as Conditional Rendring
     // }
-    let status = (0, _useNetStatusDefault.default)() // using custom hooks for check net status
-    ;
-    if (status === false) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+    let status = (0, _useNetStatus.default)(); // using custom hooks for check net status
+    if (status === false) // if false then update the message (i.e offline)
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
         className: "status",
         children: "Check your internet connection!!"
     }, void 0, false, {
         fileName: "src/components/Body.jsx",
-        lineNumber: 71,
-        columnNumber: 23
+        lineNumber: 68,
+        columnNumber: 12
     }, undefined);
-    return List.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
+    return List.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_Shimmer.default, {}, void 0, false, {
         fileName: "src/components/Body.jsx",
-        lineNumber: 76,
-        columnNumber: 37
-    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "flex flex-wrap mx-28 mt-8 space-x-[25px] justify-evenly",
+        lineNumber: 70,
+        columnNumber: 30
+    }, undefined) : //Ternary orperator  ---->        // if condition then render shimmerui otherwise render resturant list if api fetched a data
+    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "flex flex-wrap mx-32 mt-8 space-x-[25px] justify-evenly",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "flex pl-[320px] absolute",
+                className: "flex pl-[450px] absolute",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
-                        className: "fa-solid fa-magnifying-glass absolute left-[600px] top-[12px]"
+                        className: "fa-solid fa-magnifying-glass absolute left-[750px] items-center top-[12px]"
                     }, void 0, false, {
                         fileName: "src/components/Body.jsx",
-                        lineNumber: 86,
+                        lineNumber: 77,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        className: "ml-32 border-black border-2 rounded-md ",
+                        className: "ml-32  border-black border-2 rounded-md  p-2",
                         type: "text",
                         placeholder: "Search",
                         value: search,
@@ -36109,7 +36119,7 @@ let Body = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/Body.jsx",
-                        lineNumber: 87,
+                        lineNumber: 78,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -36123,13 +36133,14 @@ let Body = ()=>{
                         children: "Click to Search"
                     }, void 0, false, {
                         fileName: "src/components/Body.jsx",
-                        lineNumber: 95,
+                        lineNumber: 83,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         className: "ml-4 bg-slate-950 text-white rounded-md p-2",
                         onClick: ()=>{
                             const FilterList = List.filter((resturant)=>{
+                                // to filter resturant with rating above 4 
                                 return resturant.info.avgRating > 4.3;
                             });
                             setFilterList(FilterList); // updating/modifiying a state varibale copy value with filterd value (resturants)
@@ -36137,47 +36148,43 @@ let Body = ()=>{
                         children: " Top Rated Resturants "
                     }, void 0, false, {
                         fileName: "src/components/Body.jsx",
-                        lineNumber: 112,
+                        lineNumber: 96,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.jsx",
-                lineNumber: 84,
+                lineNumber: 75,
                 columnNumber: 13
             }, undefined),
-            filterList.map((resturant)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+            filterList.map((resturant)=>// showing data from filterlist 
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactRouterDom.Link, {
                     to: "/resturant/" + resturant.info.id,
                     children: [
                         "   ",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _resturantcardDefault.default), {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_Resturantcard.default, {
                             Resdata: resturant
                         }, void 0, false, {
                             fileName: "src/components/Body.jsx",
-                            lineNumber: 138,
-                            columnNumber: 116
+                            lineNumber: 116,
+                            columnNumber: 113
                         }, undefined),
                         " "
                     ]
                 }, resturant.info.id, true, {
                     fileName: "src/components/Body.jsx",
-                    lineNumber: 138,
-                    columnNumber: 21
+                    lineNumber: 116,
+                    columnNumber: 5
                 }, undefined))
         ]
     }, void 0, true, {
         fileName: "src/components/Body.jsx",
-        lineNumber: 82,
-        columnNumber: 9
+        lineNumber: 73,
+        columnNumber: 3
     }, undefined);
 };
-_s(Body, "RM0+vCXITYeMmi8jueVi7L/TLiE=", false, function() {
-    return [
-        (0, _useNetStatusDefault.default)
-    ];
-});
 _c = Body;
-exports.default = Body;
+var _default = exports.default = Body;
 var _c;
 $RefreshReg$(_c, "Body");
 
@@ -36186,27 +36193,34 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./Resturantcard":"fZm7i","react":"21dqq","./Shimmer":"imnNo","react-router-dom":"9xmpe","../constants/url":"g5A37","./utils/useNetStatus":"iVrGw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fZm7i":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","cdeac73b2d5325eb":"fZm7i","943de6e8f8e83e49":"21dqq","6f8964d38dd56970":"imnNo","8f9491282c9dbd6f":"9xmpe","9d81d0f10680398f":"g5A37","754a53d6a1594a60":"iVrGw"}],"fZm7i":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a7ef = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$a7ef.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _url = require("../constants/url"); // importing cdn url for resturant imges     // this import is use when named export is done
-var _userContext = require("./utils/UserContext");
-var _userContextDefault = parcelHelpers.interopDefault(_userContext);
-var _s = $RefreshSig$();
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = void 0;
+var _react = require("3113f1b1d5748e33");
+var _url = require("4fd08ed1fd0867cb");
+var _UserContext = _interopRequireDefault(require("4b53cfa75596dbc"));
+function _interopRequireDefault(e) {
+    return e && e.__esModule ? e : {
+        default: e
+    };
+}
+// importing cdn url for resturant imges     // this import is use when named export is done
 let Resturantcard = (props)=>{
-    _s();
+    // resturant card component   // props = Reslist(data from api)     
     let { Resdata } = props;
     let { cloudinaryImageId, name, avgRating, cuisines, locality, costForTwo, areaName } = Resdata.info;
     let { deliveryTime } = Resdata.info.sla;
-    let loggedInUser = (0, _react.useContext)((0, _userContextDefault.default)); // using usecontext hooks and data from usercontext
+    let loggedInUser = (0, _react.useContext)(_UserContext.default); // using usecontext hooks and data from usercontext
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "mt-20  h-[340px] w-[220px] rounded-md hover:h-[150px] ",
         style: {
@@ -36214,12 +36228,12 @@ let Resturantcard = (props)=>{
         },
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: (0, _url.ResImg_Url) + cloudinaryImageId,
+                src: _url.ResImg_Url + cloudinaryImageId,
                 alt: "resturant img",
                 className: " object-cover w-[220px] h-[180px] rounded"
             }, void 0, false, {
                 fileName: "src/components/Resturantcard.jsx",
-                lineNumber: 21,
+                lineNumber: 36,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -36230,7 +36244,7 @@ let Resturantcard = (props)=>{
                         children: name
                     }, void 0, false, {
                         fileName: "src/components/Resturantcard.jsx",
-                        lineNumber: 26,
+                        lineNumber: 41,
                         columnNumber: 16
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -36243,7 +36257,7 @@ let Resturantcard = (props)=>{
                                         className: "fa-regular fa-star"
                                     }, void 0, false, {
                                         fileName: "src/components/Resturantcard.jsx",
-                                        lineNumber: 30,
+                                        lineNumber: 45,
                                         columnNumber: 26
                                     }, undefined),
                                     " ",
@@ -36251,7 +36265,7 @@ let Resturantcard = (props)=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Resturantcard.jsx",
-                                lineNumber: 30,
+                                lineNumber: 45,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -36261,7 +36275,7 @@ let Resturantcard = (props)=>{
                                         className: "fa-solid fa-hourglass-half "
                                     }, void 0, false, {
                                         fileName: "src/components/Resturantcard.jsx",
-                                        lineNumber: 31,
+                                        lineNumber: 46,
                                         columnNumber: 26
                                     }, undefined),
                                     " ",
@@ -36270,27 +36284,27 @@ let Resturantcard = (props)=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Resturantcard.jsx",
-                                lineNumber: 31,
+                                lineNumber: 46,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Resturantcard.jsx",
-                        lineNumber: 28,
+                        lineNumber: 43,
                         columnNumber: 16
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         children: cuisines.join(", ").substring(0, 19) + "..."
                     }, void 0, false, {
                         fileName: "src/components/Resturantcard.jsx",
-                        lineNumber: 35,
+                        lineNumber: 50,
                         columnNumber: 16
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                         children: costForTwo
                     }, void 0, false, {
                         fileName: "src/components/Resturantcard.jsx",
-                        lineNumber: 37,
+                        lineNumber: 52,
                         columnNumber: 16
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -36300,7 +36314,7 @@ let Resturantcard = (props)=>{
                                 className: "fa-solid fa-location-dot"
                             }, void 0, false, {
                                 fileName: "src/components/Resturantcard.jsx",
-                                lineNumber: 39,
+                                lineNumber: 54,
                                 columnNumber: 21
                             }, undefined),
                             "  ",
@@ -36309,7 +36323,7 @@ let Resturantcard = (props)=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Resturantcard.jsx",
-                        lineNumber: 39,
+                        lineNumber: 54,
                         columnNumber: 16
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -36320,26 +36334,25 @@ let Resturantcard = (props)=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Resturantcard.jsx",
-                        lineNumber: 41,
+                        lineNumber: 56,
                         columnNumber: 16
                     }, undefined),
                     "   "
                 ]
             }, void 0, true, {
                 fileName: "src/components/Resturantcard.jsx",
-                lineNumber: 24,
+                lineNumber: 39,
                 columnNumber: 11
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Resturantcard.jsx",
-        lineNumber: 20,
-        columnNumber: 9
+        lineNumber: 33,
+        columnNumber: 10
     }, undefined);
 };
-_s(Resturantcard, "+kH3gGvZv9Ibo7WsvfvrSvgCZBU=");
 _c = Resturantcard;
-exports.default = Resturantcard;
+var _default = exports.default = Resturantcard;
 var _c;
 $RefreshReg$(_c, "Resturantcard");
 
@@ -36348,7 +36361,7 @@ $RefreshReg$(_c, "Resturantcard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../constants/url":"g5A37","./utils/UserContext":"2Wr1n","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"g5A37":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","3113f1b1d5748e33":"21dqq","4fd08ed1fd0867cb":"g5A37","4b53cfa75596dbc":"2Wr1n","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"g5A37":[function(require,module,exports) {
 // constant url used in projects
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);

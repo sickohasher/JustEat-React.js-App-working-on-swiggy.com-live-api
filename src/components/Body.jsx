@@ -79,12 +79,12 @@ let Body = ()=>{       // body component
 
       
 
-        <div className="flex flex-wrap mx-28 mt-8 space-x-[25px] justify-evenly"  >
+        <div className="flex flex-wrap mx-32 mt-8 space-x-[25px] justify-evenly"  >
 
-            <div className="flex pl-[320px] absolute">
+            <div className="flex pl-[450px] absolute">
 
-            <i className="fa-solid fa-magnifying-glass absolute left-[600px] top-[12px]"></i>
-                <input className="ml-32 border-black border-2 rounded-md " type="text" placeholder="Search" value={search} onChange = {(e)=>{
+            <i className="fa-solid fa-magnifying-glass absolute left-[750px] items-center top-[12px]"></i>
+                <input className="ml-32  border-black border-2 rounded-md  p-2" type="text" placeholder="Search" value={search} onChange = {(e)=>{
 
                           
                                       setSearch(e.target.value);           // set value as user type in searchbox
